@@ -2,6 +2,7 @@ package com.example.design_repo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,11 +30,31 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name,pass;
+                String name,pass,filer_name,filer_password;
                name = username.getText().toString();
                pass = password.getText().toString();
 
-               text.setText(name);
+               filer_name = "Jaffar";
+               filer_password = "1";
+
+               if(name.equals(filer_name) && pass.equals(filer_password)){
+                   Intent new_screen = new Intent(MainActivity.this,Welcome_Page.class);
+                   startActivity(new_screen);
+                   text.setText("Login Succesfull");
+               }else if(name.equals("") && pass.equals("")){
+                   text.setText("Enter Feild");
+               }else if(name!=filer_name || pass != filer_password){
+                   text.setText("Wrong");
+               }
+            }
+        });
+    }
+
+    public void textTaker(){
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
     }
